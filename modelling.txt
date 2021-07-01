@@ -1,0 +1,34 @@
+Ecommerce
+
+
+	modelling?
+
+	Product
+		fields
+			name, price, description, color, size, material
+		methods
+			accessors mutators
+			getter    setter
+			toString
+		constructor
+
+
+	Employee
+		fields
+			id, name, surname, address, tel, email, salary, department, manager
+
+		methods
+			accessors mutators
+			getter    setter
+			toString
+		constructor
+
+	Customer
+
+	fields
+			id, name, surname, address, tel, email,
+
+	Order
+			id, list[Product], Customer, Employee, orderDate, Shippment
+
+			addProduct
