@@ -97,11 +97,45 @@ public class Product {
      */
     public void updatePrice(double priceLimitA, double priceLimitB,
                             double priceIncrease1, double priceIncrease2, double priceIncrease3) {
-        if (price < priceLimitA) price += priceIncrease1;
-        else if (price < priceLimitB) price += priceIncrease2;
-        else price += priceIncrease3;
+        if (price < priceLimitA)
+            price += priceIncrease1;
+        else if (price < priceLimitB)
+            price += priceIncrease2;
+        else
+            price += priceIncrease3;
     }
 
+    /**
+     * R4.32
+     */
+    public void updateDescription() {
+        if (size <= 5) {
+            description += " Size=SMALL";
+        } else if (size <= 10) {
+            description += " Size=MEDIUM";
+        } else {
+            description += " Size=LARGE";
+        }
+    }
+
+    /**
+     * R4.33
+     */
+    public void updatePriceByColor() {
+
+        switch (color) {
+            case BLACK:
+                break;
+            case RED:
+            case BROWN:
+                price += 10;
+                break;
+            default:
+                price -=2;
+         }
+
+
+    }
 
 }
 
