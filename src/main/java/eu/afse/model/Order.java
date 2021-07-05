@@ -3,6 +3,7 @@ package eu.afse.model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class Order {
     private Date orderDate;
@@ -61,7 +62,9 @@ public class Order {
     }
 
     public Product read(int index) {
+        if (index<products.size() && index>=0)
         return products.get(index);
+        return null;
     }
 
     //changes price to a Product
@@ -87,6 +90,27 @@ public class Order {
     }
 
 
-    // calculate sum
+    // calculate total
+    public double calculateTotal() {
+        double calculation = 0;
+//        for (int index = 0 ; index < products.size(); index ++){
+//            calculation += products.get(index).getPrice();
+//        }
+
+        for (Product product : products) {
+            calculation += product.getPrice();
+        }
+
+//      calculation = products.stream().map(product ->product.getPrice())
+//              .reduce( (value1, value2) -> value1+value2).get();
+
+        return calculation;
+    }
+
+    public int countProducts(){
+        return products.size();
+    }
+
+
 
 }

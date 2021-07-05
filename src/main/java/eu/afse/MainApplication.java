@@ -1,10 +1,8 @@
 package eu.afse;
 
-import eu.afse.model.Color;
-import eu.afse.model.Customer;
-import eu.afse.model.Order;
-import eu.afse.model.Product;
+import eu.afse.model.*;
 
+import java.util.Date;
 import java.util.Scanner;
 
 public class MainApplication {
@@ -61,18 +59,44 @@ public class MainApplication {
         Product product2 = new Product("zz", 12, DESCRIPTION, COLOR, SIZE, MATERIAL);
         Product product3 = new Product("yy", 30, DESCRIPTION, COLOR, SIZE, MATERIAL);
 
+        ImportedProduct importedProduct = new ImportedProduct("ccy", 3, DESCRIPTION, COLOR, SIZE, MATERIAL, "China");
+
+
         Customer customer = new Customer(7, "George", "Staras", "Athina","1234567", "staras@gmail.com");
 
         Order order = new Order();
 
         order.setCustomer(customer);
 
+        order.setId("C1234");
+        order.setOrderDate( new Date(121,6,5));
+
+        System.out.println(order.getOrderDate());
         order.create(product);
         order.create(product2);
         order.create(product3);
+        order.create(importedProduct);
 
         System.out.println(order);
+        System.out.println("Total order cost = " + order.calculateTotal());
 
+        System.out.println("-----------------------------------");
+        System.out.println(order.read(-2));
+        System.out.println(order.read(3));
+        if (order.read(4)!=null)
+        System.out.println(order.read(4));
+
+        ///////////////////////////
+
+        ProductIndex productIndex = new ProductIndex();
+        productIndex.addProductToMap("a1", product);
+        productIndex.addProductToMap("a2", product2);
+        productIndex.addProductToMap("a3", product3);
+        productIndex.addProductToMap("a4", importedProduct);
+        productIndex.addProductToMap("a5", product3);
+        productIndex.addProductToMap("a2", product3);
+
+        System.out.println(productIndex);
 
     }
 
