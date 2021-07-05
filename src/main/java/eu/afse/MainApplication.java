@@ -1,6 +1,8 @@
 package eu.afse;
 
 import eu.afse.model.Color;
+import eu.afse.model.Customer;
+import eu.afse.model.Order;
 import eu.afse.model.Product;
 
 import java.util.Scanner;
@@ -55,6 +57,22 @@ public class MainApplication {
         product.updatePrice(5,10, 1,
                 2,3);
         System.out.println("product = " + product );
+
+        Product product2 = new Product("zz", 12, DESCRIPTION, COLOR, SIZE, MATERIAL);
+        Product product3 = new Product("yy", 30, DESCRIPTION, COLOR, SIZE, MATERIAL);
+
+        Customer customer = new Customer(7, "George", "Staras", "Athina","1234567", "staras@gmail.com");
+
+        Order order = new Order();
+
+        order.setCustomer(customer);
+
+        order.create(product);
+        order.create(product2);
+        order.create(product3);
+
+        System.out.println(order);
+
 
     }
 
