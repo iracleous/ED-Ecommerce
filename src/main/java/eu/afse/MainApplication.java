@@ -1,18 +1,12 @@
 package eu.afse;
 
+import eu.afse.data.ProductRepository;
 import eu.afse.model.*;
 
 import java.util.Date;
 import java.util.Scanner;
 
 public class MainApplication {
-
-    private static final String NAME = "dress";
-    private static final double PRICE = 25;
-    private static final String DESCRIPTION = "very nice";
-    private static final Color COLOR = Color.RED;
-    private static final int SIZE = 25;
-    private static final String MATERIAL = "cotton";
 
 
 
@@ -46,20 +40,7 @@ public class MainApplication {
 //        shortNumber = (short) anInt  ;
 
 
-
-
-        Product product = new Product(NAME, PRICE, DESCRIPTION, COLOR, SIZE, MATERIAL);
-        System.out.println("product = " + product );
-
-
-        product.updatePrice(5,10, 1,
-                2,3);
-        System.out.println("product = " + product );
-
-        Product product2 = new Product("zz", 12, DESCRIPTION, COLOR, SIZE, MATERIAL);
-        Product product3 = new Product("yy", 30, DESCRIPTION, COLOR, SIZE, MATERIAL);
-
-        ImportedProduct importedProduct = new ImportedProduct("ccy", 3, DESCRIPTION, COLOR, SIZE, MATERIAL, "China");
+        ProductRepository productRepository = new ProductRepository();
 
 
         Customer customer = new Customer(7, "George", "Staras", "Athina","1234567", "staras@gmail.com");
@@ -72,10 +53,10 @@ public class MainApplication {
         order.setOrderDate( new Date(121,6,5));
 
         System.out.println(order.getOrderDate());
-        order.create(product);
-        order.create(product2);
-        order.create(product3);
-        order.create(importedProduct);
+        order.create(productRepository.getProducts().get(0));
+        order.create(productRepository.getProducts().get(1));
+        order.create(productRepository.getProducts().get(2));
+        order.create(productRepository.getProducts().get(3));
 
         System.out.println(order);
         System.out.println("Total order cost = " + order.calculateTotal());
@@ -89,12 +70,12 @@ public class MainApplication {
         ///////////////////////////
 
         ProductIndex productIndex = new ProductIndex();
-        productIndex.addProductToMap("a1", product);
-        productIndex.addProductToMap("a2", product2);
-        productIndex.addProductToMap("a3", product3);
-        productIndex.addProductToMap("a4", importedProduct);
-        productIndex.addProductToMap("a5", product3);
-        productIndex.addProductToMap("a2", product3);
+        productIndex.addProductToMap("a1", productRepository.getProducts().get(0));
+        productIndex.addProductToMap("a2", productRepository.getProducts().get(1));
+        productIndex.addProductToMap("a3", productRepository.getProducts().get(2));
+        productIndex.addProductToMap("a4", productRepository.getProducts().get(3));
+        productIndex.addProductToMap("a5", productRepository.getProducts().get(0));
+        productIndex.addProductToMap("a2", productRepository.getProducts().get(1));
 
         System.out.println(productIndex);
 
