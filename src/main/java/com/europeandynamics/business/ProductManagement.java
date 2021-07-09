@@ -16,7 +16,7 @@ public class ProductManagement {
      * above -> priceIncrease3
      * @author Dimitris Iracleous
      */
-    public void updatePrice(Product product, double priceLimitA, double priceLimitB,
+    public static void updatePrice(Product product, double priceLimitA, double priceLimitB,
                             double priceIncrease1, double priceIncrease2, double priceIncrease3) {
         if (product.getPrice() < priceLimitA)
             product.setPrice( product.getPrice() + priceIncrease1);
@@ -32,7 +32,7 @@ public class ProductManagement {
      * T 4.32
      * change descriptions according to size
      */
-    public void updateDescription(Product product) {
+    public static void updateDescription(Product product) {
         if (product.getSize() <= 5) {
             product.setDescription(  product.getDescription()+ " Size=SMALL" );
         } else if (product.getSize() <= 10) {
@@ -48,7 +48,7 @@ public class ProductManagement {
      * T4.33
      * change prices according to color
      */
-    public void updatePriceByColor(Product product) {
+    public static void updatePriceByColor(Product product) {
         switch (product.getColor()) {
             case BLACK:
                 break;
