@@ -1,6 +1,7 @@
 package com.europeandynamics.data;
 
 
+import com.europeandynamics.model.Color;
 import com.europeandynamics.model.Product;
 
 import java.util.ArrayList;
@@ -8,7 +9,23 @@ import java.util.ArrayList;
 
 public class ProductRepository {
 
-    private final ArrayList<Product> products = new ArrayList<>();
+
+    private static final String NAME = "dress";
+    private static final double PRICE = 25;
+    private static final String DESCRIPTION = "very nice";
+    private static final Color COLOR = Color.RED;
+    private static final int SIZE = 25;
+    private static final String MATERIAL = "cotton";
+
+
+    private   final ArrayList<Product> products = new ArrayList<>();
+
+
+    public ProductRepository(){
+        products.add(new Product(NAME, PRICE, DESCRIPTION, COLOR, SIZE, MATERIAL));
+
+    }
+
 
 
 
@@ -34,9 +51,9 @@ public class ProductRepository {
 
 
 
-
     // calculate total
     public double calculateTotal() {
+
         double calculation = 0;
 //        for (int index = 0 ; index < products.size(); index ++){
 //            calculation += products.get(index).getPrice();
