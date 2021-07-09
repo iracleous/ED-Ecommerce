@@ -1,4 +1,4 @@
-package eu.afse.model;
+package com.europeandynamics.model;
 
 public enum Color {
 
